@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
-    @Query("SELECT DISTINCT t FROM Trip t INNER JOIN FETCH t.bookingoffice_list ")
-    Trip queryTrip();
+
 }
