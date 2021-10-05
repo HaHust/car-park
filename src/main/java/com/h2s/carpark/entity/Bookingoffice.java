@@ -1,5 +1,6 @@
 package com.h2s.carpark.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "bookingoffice")
 @Getter
 @Setter
-@ToString
 public class Bookingoffice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,19 @@ public class Bookingoffice {
     private java.sql.Date startContractDeadline;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trip_id", nullable = false)
+    @JoinColumn(name = "trip_id")
     private Trip trip;
+
+    @Override
+    public String toString() {
+        return "Bookingoffice{" +
+                "officeId=" + officeId +
+                ", endContractDeadline=" + endContractDeadline +
+                ", officeName='" + officeName + '\'' +
+                ", officePhone='" + officePhone + '\'' +
+                ", officePlace='" + officePlace + '\'' +
+                ", officePrice=" + officePrice +
+                ", startContractDeadline=" + startContractDeadline +
+                '}';
+    }
 }
