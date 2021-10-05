@@ -5,8 +5,20 @@
 
 package com.h2s.carpark.service;
 
-import org.springframework.stereotype.Service;
+import com.h2s.carpark.dto.payload.ApiResponse;
+import com.h2s.carpark.dto.request.EmployeeRequest;
+import com.h2s.carpark.dto.response.EmployeeResponse;
 
-@Service
+import java.util.List;
+
 public interface EmployeeService {
+    public List<EmployeeResponse> getAll();
+
+    public EmployeeResponse addEmployee(EmployeeRequest employeeRequest);
+
+    public List<EmployeeResponse> searchByAccount(String account);
+
+    public ApiResponse deleteEmployee(Long id);
+
+    ApiResponse updateEmployee(Long id, EmployeeRequest employeeRequest);
 }
