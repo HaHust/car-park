@@ -35,6 +35,7 @@ public class Bookingoffice {
     @Column(name = "startContractDeadline")
     private java.sql.Date startContractDeadline;
 
-    @Column(name = "tripId")
-    private Long tripId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trip_id", nullable = false)
+    private Trip trip;
 }

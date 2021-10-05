@@ -22,10 +22,4 @@ public class Ticket {
 
     @Column(name = "customerName")
     private String customerName;
-
-    @Column(name = "licensePlate")
-    private String licensePlate;
-
-    @Column(name = "tripId")
-    private Long tripId;
 }
