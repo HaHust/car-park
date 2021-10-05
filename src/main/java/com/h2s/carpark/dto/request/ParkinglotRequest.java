@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ParkinglotDTORequest {
+public class ParkinglotRequest {
     private Long parkArea;
     private String parkName;
     private String parkPlace;

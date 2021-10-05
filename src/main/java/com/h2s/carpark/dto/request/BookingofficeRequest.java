@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BookingofficeDTORequest {
+public class BookingofficeRequest {
 
     private java.sql.Date endContractDeadline;
     private String officeName;

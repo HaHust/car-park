@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CarDTOResponse {
+public class CarResponse {
     private String carColor;
     private String carType;
     private String company;

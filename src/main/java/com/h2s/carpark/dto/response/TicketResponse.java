@@ -7,7 +7,7 @@ import java.sql.Time;
 
 @Getter
 @Setter
-public class TicketDTOResponse {
+public class TicketResponse {
     private java.sql.Time bookingTime;
     private String customerName;
 }

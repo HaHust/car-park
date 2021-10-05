@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TicketDTORequest {
+public class TicketRequest {
     private java.sql.Time bookingTime;
     private String customerName;
 }

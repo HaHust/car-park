@@ -1,11 +1,11 @@
-package com.h2s.carpark.dto.response;
+package com.h2s.carpark.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class TripDTOResponse {
+public class TripRequest {
     private Integer bookedTicketNumber;
     private String carType;
     private String departureDate;
