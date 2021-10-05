@@ -10,10 +10,8 @@ import javax.persistence.*;
 @Table(name = "car")
 @Getter
 @Setter
-@ToString
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "licensePlate")
     private String licensePlate;
 
@@ -26,4 +24,17 @@ public class Car {
     @Column(name = "company")
     private String company;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "park_id")
+    private Parkinglot parkinglot;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "licensePlate='" + licensePlate + '\'' +
+                ", carColor='" + carColor + '\'' +
+                ", carType='" + carType + '\'' +
+                ", company='" + company + '\'' +
+                '}';
+    }
 }

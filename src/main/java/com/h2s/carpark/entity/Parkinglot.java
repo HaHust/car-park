@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "parkinglot")
@@ -32,4 +33,7 @@ public class Parkinglot {
     @Column(name = "parkStatus")
     private String parkStatus;
 
+    @OneToMany(mappedBy = "parkinglot",
+            fetch = FetchType.LAZY)
+    private List<Car> cars;
 }

@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CarResponse {
+    private String licensePlate;
     private String carColor;
     private String carType;
     private String company;
-
 }
