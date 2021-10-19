@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,20 +17,21 @@ import java.util.List;
 public class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tripId")
-    private Long tripId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "trip_id")
+    private String tripId;
 
-    @Column(name = "bookedTicketNumber")
+    @Column(name = "booked_ticket_number")
     private Integer bookedTicketNumber;
 
-    @Column(name = "carType")
+    @Column(name = "car_type")
     private String carType;
 
-    @Column(name = "departureDate")
+    @Column(name = "departure_date")
     private java.sql.Date departureDate;
 
-    @Column(name = "departureTime")
+    @Column(name = "departuret_time")
     private java.sql.Time departureTime;
 
     @Column(name = "destination")
@@ -38,7 +40,7 @@ public class Trip {
     @Column(name = "driver")
     private String driver;
 
-    @Column(name = "maximumOnlineTicketNumber")
+    @Column(name = "maximum_online_ticket_number")
     private Integer maximumOnlineTicketNumber;
 
     @OneToMany(mappedBy = "trip",

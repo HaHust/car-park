@@ -32,7 +32,7 @@ public class EmployeeController {
     }
 
     @PutMapping("{id}")
-    public ApiResponse updateEmployee(@PathVariable("id") Long id,@RequestBody EmployeeRequest employeeRequest){
+    public ApiResponse updateEmployee(@PathVariable("id") String id,@RequestBody EmployeeRequest employeeRequest){
         return employeeService.updateEmployee(id, employeeRequest);
     }
 
@@ -42,7 +42,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("{id}")
-    public ApiResponse deleteEmployee(  @PathVariable("id") Long id){
+    public ApiResponse deleteEmployee(  @PathVariable("id") String id){
         return employeeService.deleteEmployee(id);
     }
 

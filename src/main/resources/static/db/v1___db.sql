@@ -1,90 +1,86 @@
 -- carpark.employee definition
 
 CREATE TABLE `employee` (
-                            `employeeId` bigint NOT NULL AUTO_INCREMENT,
+                            `employee_id` varchar(36) NOT NULL,
                             `account` varchar(50) NOT NULL,
                             `department` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `employeeAddress` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                            `employeeBirthdate` date NOT NULL,
-                            `employeeEmail` varchar(50) DEFAULT NULL,
-                            `employeeName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                            `employeePhone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                            `employee_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                            `employee_birthdate` date NOT NULL,
+                            `employee_email` varchar(50) DEFAULT NULL,
+                            `employee_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                            `employee_phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                             `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                             `sex` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
-                            PRIMARY KEY (`employeeId`)
+                            PRIMARY KEY (`employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- carpark.parkinglot definition
 
 CREATE TABLE `parkinglot` (
-                              `parkId` bigint NOT NULL AUTO_INCREMENT,
-                              `parkArea` bigint NOT NULL,
-                              `parkName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                              `parkPlace` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                              `parkPrice` bigint NOT NULL,
-                              `parkStatus` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                              PRIMARY KEY (`parkId`)
+                              `park_id` varchar(36) NOT NULL ,
+                              `park_area` bigint NOT NULL,
+                              `park_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                              `park_place` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                              `park_price` bigint NOT NULL,
+                              `park_status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                              PRIMARY KEY (`park_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- carpark.trip definition
 
 CREATE TABLE `trip` (
-                        `tripId` bigint NOT NULL AUTO_INCREMENT,
-                        `bookedTicketNumber` int DEFAULT NULL,
-                        `carType` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                        `departureDate` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                        `departureTime` bigint NOT NULL,
+                        `trip_id` varchar(36) NOT NULL ,
+                        `booked_ticket_number` int DEFAULT NULL,
+                        `car_type` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                        `departure_date` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                        `departure_time` bigint NOT NULL,
                         `destination` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                         `driver` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                        `maximumOnlineTicketNumber` int NOT NULL,
-                        PRIMARY KEY (`tripId`)
+                        `maximum_online_ticket_number` int NOT NULL,
+                        PRIMARY KEY (`trip_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- carpark.bookingoffice definition
 
 CREATE TABLE `bookingoffice` (
-                                 `officeId` bigint NOT NULL AUTO_INCREMENT,
-                                 `endContractDeadline` date NOT NULL,
-                                 `officeName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                                 `officePhone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                                 `officePlace` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                                 `officePrice` bigint NOT NULL,
-                                 `startContractDeadline` date NOT NULL,
-                                 `tripId` bigint DEFAULT NULL,
-                                 PRIMARY KEY (`officeId`),
-                                 KEY `tripId` (`tripId`),
-                                 CONSTRAINT `bookingoffice_ibfk_1` FOREIGN KEY (`tripId`) REFERENCES `trip` (`tripId`)
+                                 `office_id` varchar(36) NOT NULL ,
+                                 `end_contract_deadline` date NOT NULL,
+                                 `office_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                 `office_phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                 `office_place` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                 `office_price` bigint NOT NULL,
+                                 `start_contract_deadline` date NOT NULL,
+                                 `trip_id` varchar(36) DEFAULT NULL,
+                                 PRIMARY KEY (`office_id`),
+                                 FOREIGN KEY (`trip_id`) REFERENCES `trip` (`trip_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- carpark.car definition
 
 CREATE TABLE `car` (
-                       `licensePlate` varchar(50) NOT NULL,
-                       `carColor` varchar(11) DEFAULT NULL,
-                       `carType` varchar(50) DEFAULT NULL,
-                       `company` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                       `parkId` bigint DEFAULT NULL,
-                       PRIMARY KEY (`licensePlate`),
-                       KEY `parkId` (`parkId`),
-                       CONSTRAINT `car_ibfk_1` FOREIGN KEY (`parkId`) REFERENCES `parkinglot` (`parkId`)
+                       `license_plate` varchar(50) NOT NULL,
+                       `car_color` varchar(11) DEFAULT NULL,
+                       `car_type` varchar(50) DEFAULT NULL,
+                       `company` varchar(50) NOT NULL,
+                       `park_id` varchar(36) DEFAULT NULL,
+                       PRIMARY KEY (`license_plate`),
+                       FOREIGN KEY (`park_id`) REFERENCES `parkinglot` (`park_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- carpark.ticket definition
 
 CREATE TABLE `ticket` (
-                          `ticketId` bigint NOT NULL AUTO_INCREMENT,
-                          `bookingTime` time NOT NULL,
-                          `customerName` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                          `licensePlate` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                          `tripId` bigint DEFAULT NULL,
-                          PRIMARY KEY (`ticketId`),
-                          KEY `tripId` (`tripId`),
-                          KEY `licensePlate` (`licensePlate`),
-                          CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`tripId`) REFERENCES `trip` (`tripId`),
-                          CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`licensePlate`) REFERENCES `car` (`licensePlate`)
+                          `ticket_id` varchar(36) NOT NULL ,
+                          `booking_time` time NOT NULL,
+                          `customer_name` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                          `license_plate` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                          `trip_id` varchar(36) DEFAULT NULL,
+                          PRIMARY KEY (`ticket_id`),
+                          FOREIGN KEY (`trip_id`) REFERENCES `trip` (`trip_id`),
+                          FOREIGN KEY (`license_plate`) REFERENCES `car` (`license_plate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

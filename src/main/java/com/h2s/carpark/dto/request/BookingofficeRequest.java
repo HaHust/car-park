@@ -16,6 +16,6 @@ public class BookingofficeRequest {
     private Long officePrice;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private java.sql.Date startContractDeadline;
-    private Long tripId;
+    private String tripId;
 
 }

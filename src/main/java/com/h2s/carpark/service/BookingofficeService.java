@@ -20,7 +20,7 @@ public interface BookingofficeService {
 
     public BookingofficeResponse addBookingoffice(BookingofficeRequest bookingofficeRequest);
 
-    ApiResponse updateBookingoffice(Long id, BookingofficeRequest bookingofficeRequest);
+    ApiResponse updateBookingoffice(String id, BookingofficeRequest bookingofficeRequest);
 
-    ApiResponse deleteEmployee(Long id);
+    ApiResponse deleteEmployee(String id);
 }

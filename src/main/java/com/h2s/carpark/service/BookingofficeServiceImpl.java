@@ -45,7 +45,7 @@ public class BookingofficeServiceImpl implements BookingofficeService {
 
     @Override
     public BookingofficeResponse addBookingoffice(BookingofficeRequest bookingofficeRequest) {
-        Long tripId = bookingofficeRequest.getTripId();
+        String tripId = bookingofficeRequest.getTripId();
         Optional<Trip> trip = tripRepository.findById(tripId);
         if(!trip.isPresent())
             return null;
@@ -57,7 +57,7 @@ public class BookingofficeServiceImpl implements BookingofficeService {
     }
 
     @Override
-    public ApiResponse updateBookingoffice(Long id, BookingofficeRequest bookingofficeRequest) {
+    public ApiResponse updateBookingoffice(String id, BookingofficeRequest bookingofficeRequest) {
         Optional<Bookingoffice> bookingoffice = bookingofficeRepository.findById(id);
         Optional<Trip> trip = tripRepository.findById(bookingofficeRequest.getTripId());
         if(!bookingoffice.isPresent())
@@ -75,7 +75,7 @@ public class BookingofficeServiceImpl implements BookingofficeService {
     }
 
     @Override
-    public ApiResponse deleteEmployee(Long id) {
+    public ApiResponse deleteEmployee(String id) {
         try {
             bookingofficeRepository.deleteById(id);
             return new ApiResponse(true,"delete employee Success");

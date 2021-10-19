@@ -3,6 +3,7 @@ package com.h2s.carpark.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,23 +15,24 @@ import java.util.List;
 @ToString
 public class Parkinglot {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "parkId")
-    private Long parkId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "park_id")
+    private String parkId;
 
-    @Column(name = "parkArea")
+    @Column(name = "park_area")
     private Long parkArea;
 
-    @Column(name = "parkName")
+    @Column(name = "park_name")
     private String parkName;
 
-    @Column(name = "parkPlace")
+    @Column(name = "park_place")
     private String parkPlace;
 
-    @Column(name = "parkPrice")
+    @Column(name = "park_price")
     private Long parkPrice;
 
-    @Column(name = "parkStatus")
+    @Column(name = "park_status")
     private String parkStatus;
 
     @OneToMany(mappedBy = "parkinglot",

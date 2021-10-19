@@ -18,7 +18,7 @@ public interface EmployeeService {
 
     public List<EmployeeResponse> searchByAccount(String account);
 
-    public ApiResponse deleteEmployee(Long id);
+    public ApiResponse deleteEmployee(String id);
 
-    ApiResponse updateEmployee(Long id, EmployeeRequest employeeRequest);
+    ApiResponse updateEmployee(String id, EmployeeRequest employeeRequest);
 }

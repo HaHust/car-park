@@ -19,7 +19,7 @@ public interface TripService {
     List<TripResponse> getAll();
     public TripResponse addTrip(TripRequest tripRequest);
 
-    ApiResponse updateTrip(Long id, TripRequest tripRequest);
+    ApiResponse updateTrip(String id, TripRequest tripRequest);
 
-    ApiResponse deleteTrip(Long id);
+    ApiResponse deleteTrip(String id);
 }

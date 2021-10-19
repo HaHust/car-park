@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -13,26 +14,27 @@ import javax.persistence.*;
 @Setter
 public class Bookingoffice {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "officeId")
-    private Long officeId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "office_id")
+    private String officeId;
 
-    @Column(name = "endContractDeadline")
+    @Column(name = "endContract_deadline")
     private java.sql.Date endContractDeadline;
 
-    @Column(name = "officeName")
+    @Column(name = "office_name")
     private String officeName;
 
-    @Column(name = "officePhone")
+    @Column(name = "office_phone")
     private String officePhone;
 
-    @Column(name = "officePlace")
+    @Column(name = "office_place")
     private String officePlace;
 
-    @Column(name = "officePrice")
+    @Column(name = "office_price")
     private Long officePrice;
 
-    @Column(name = "startContractDeadline")
+    @Column(name = "start_contract_deadline")
     private java.sql.Date startContractDeadline;
 
     @ManyToOne(fetch = FetchType.LAZY)

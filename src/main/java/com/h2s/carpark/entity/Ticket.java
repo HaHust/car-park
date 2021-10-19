@@ -3,6 +3,7 @@ package com.h2s.carpark.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -13,13 +14,14 @@ import javax.persistence.*;
 @ToString
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ticketId")
-    private Long ticketId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "ticket_id")
+    private String ticketId;
 
-    @Column(name = "bookingTime")
+    @Column(name = "booking_time")
     private java.sql.Time bookingTime;
 
-    @Column(name = "customerName")
+    @Column(name = "customer_name")
     private String customerName;
 }

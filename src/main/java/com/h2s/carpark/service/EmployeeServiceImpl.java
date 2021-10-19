@@ -56,7 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public ApiResponse deleteEmployee(Long id) {
+    public ApiResponse deleteEmployee(String id) {
         try {
             employeeRepository.deleteById(id);
             return new ApiResponse(true,"delete employee Success");
@@ -66,7 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public ApiResponse updateEmployee(Long id, EmployeeRequest employeeRequest) {
+    public ApiResponse updateEmployee(String id, EmployeeRequest employeeRequest) {
         Optional<Employee> employee = employeeRepository.findById(id);
         if(!employee.isPresent())
             return new ApiResponse(false, "Employee can't find");

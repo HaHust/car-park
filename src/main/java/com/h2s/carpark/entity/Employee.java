@@ -3,6 +3,7 @@ package com.h2s.carpark.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -13,9 +14,10 @@ import javax.persistence.*;
 @ToString
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employeeId")
-    private Long employeeId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "employee_id")
+    private String employeeId;
 
     @Column(name = "account")
     private String account;
@@ -23,19 +25,19 @@ public class Employee {
     @Column(name = "department")
     private String department;
 
-    @Column(name = "employeeAddress")
+    @Column(name = "employee_address")
     private String employeeAddress;
 
-    @Column(name = "employeeBirthdate")
+    @Column(name = "employee_birthdate")
     private java.sql.Date employeeBirthdate;
 
-    @Column(name = "employeeEmail")
+    @Column(name = "employee_email")
     private String employeeEmail;
 
-    @Column(name = "employeeName")
+    @Column(name = "employee_name")
     private String employeeName;
 
-    @Column(name = "employeePhone")
+    @Column(name = "employee_phone")
     private String employeePhone;
 
     @Column(name = "password")
@@ -43,84 +45,4 @@ public class Employee {
 
     @Column(name = "sex")
     private String sex;
-
-    public Long getEmployeeId() {
-        return this.employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getAccount() {
-        return this.account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getDepartment() {
-        return this.department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getEmployeeAddress() {
-        return this.employeeAddress;
-    }
-
-    public void setEmployeeAddress(String employeeAddress) {
-        this.employeeAddress = employeeAddress;
-    }
-
-    public java.sql.Date getEmployeeBirthdate() {
-        return this.employeeBirthdate;
-    }
-
-    public void setEmployeeBirthdate(java.sql.Date employeeBirthdate) {
-        this.employeeBirthdate = employeeBirthdate;
-    }
-
-    public String getEmployeeEmail() {
-        return this.employeeEmail;
-    }
-
-    public void setEmployeeEmail(String employeeEmail) {
-        this.employeeEmail = employeeEmail;
-    }
-
-    public String getEmployeeName() {
-        return this.employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public String getEmployeePhone() {
-        return this.employeePhone;
-    }
-
-    public void setEmployeePhone(String employeePhone) {
-        this.employeePhone = employeePhone;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSex() {
-        return this.sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 }

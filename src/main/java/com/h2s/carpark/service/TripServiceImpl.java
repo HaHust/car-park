@@ -52,7 +52,7 @@ public class TripServiceImpl implements TripService{
     }
 
     @Override
-    public ApiResponse updateTrip(Long id, TripRequest tripRequest) {
+    public ApiResponse updateTrip(String id, TripRequest tripRequest) {
         Optional<Trip> trip = tripRepository.findById(id);
         if(!trip.isPresent())
             return new ApiResponse(false, "Employee can't find");
@@ -69,7 +69,7 @@ public class TripServiceImpl implements TripService{
     }
 
     @Override
-    public ApiResponse deleteTrip(Long id) {
+    public ApiResponse deleteTrip(String id) {
         try {
             tripRepository.deleteById(id);
             return new ApiResponse(true,"delete employee Success");

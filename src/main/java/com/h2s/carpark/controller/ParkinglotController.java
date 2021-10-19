@@ -34,12 +34,12 @@ public class ParkinglotController {
     }
 
     @PutMapping("{id}")
-    public ApiResponse updateParkinglot(@PathVariable("id") Long id, @RequestBody ParkinglotRequest parkinglotRequest){
+    public ApiResponse updateParkinglot(@PathVariable("id") String id, @RequestBody ParkinglotRequest parkinglotRequest){
         return parkinglotService.updateParkinglot(id, parkinglotRequest);
     }
 
     @DeleteMapping("{id}")
-    public ApiResponse deleteParkinglot(@PathVariable("id") Long id){
+    public ApiResponse deleteParkinglot(@PathVariable("id") String id){
         return parkinglotService.deleteParkinglot(id);
     }
 

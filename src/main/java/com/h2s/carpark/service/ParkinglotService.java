@@ -18,7 +18,7 @@ public interface ParkinglotService {
 
     public ParkinglotResponse addParkinglot(ParkinglotRequest parkinglotRequest);
 
-    ApiResponse updateParkinglot(Long id, ParkinglotRequest parkinglotRequest);
+    ApiResponse updateParkinglot(String id, ParkinglotRequest parkinglotRequest);
 
-    ApiResponse deleteParkinglot(Long id);
+    ApiResponse deleteParkinglot(String id);
 }

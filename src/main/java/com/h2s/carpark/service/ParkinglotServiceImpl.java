@@ -48,7 +48,7 @@ public class ParkinglotServiceImpl implements ParkinglotService{
     }
 
     @Override
-    public ApiResponse updateParkinglot(Long id, ParkinglotRequest parkinglotRequest) {
+    public ApiResponse updateParkinglot(String id, ParkinglotRequest parkinglotRequest) {
         Optional<Parkinglot> parkinglot = parkinglotRepository.findById(id);
         if(!parkinglot.isPresent())
             return new ApiResponse(false, "Employee can't find");
@@ -63,7 +63,7 @@ public class ParkinglotServiceImpl implements ParkinglotService{
     }
 
     @Override
-    public ApiResponse deleteParkinglot(Long id) {
+    public ApiResponse deleteParkinglot(String id) {
         try {
             parkinglotRepository.deleteById(id);
             return new ApiResponse(true,"delete parkinglot Success");

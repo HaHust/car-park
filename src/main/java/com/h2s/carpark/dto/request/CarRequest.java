@@ -10,5 +10,5 @@ public class CarRequest {
     private String carColor;
     private String carType;
     private String company;
-    private Long parkId;
+    private String parkId;
 }

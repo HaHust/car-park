@@ -35,12 +35,12 @@ public class TripController {
     }
 
     @PutMapping("{id}")
-    public ApiResponse updateTrip(@PathVariable("id") Long id, @RequestBody TripRequest tripRequest){
+    public ApiResponse updateTrip(@PathVariable("id") String id, @RequestBody TripRequest tripRequest){
         return tripService.updateTrip(id, tripRequest);
     }
 
     @DeleteMapping("{id}")
-    public ApiResponse deleteTrip(@PathVariable("id") Long id){
+    public ApiResponse deleteTrip(@PathVariable("id") String id){
         return tripService.deleteTrip(id);
     }
 }

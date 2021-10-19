@@ -36,12 +36,12 @@ public class BookingofficeController {
     }
 
     @PutMapping("{id}")
-    public ApiResponse updateBookingoffice(@PathVariable("id") Long id, @RequestBody BookingofficeRequest bookingofficeRequest){
+    public ApiResponse updateBookingoffice(@PathVariable("id") String id, @RequestBody BookingofficeRequest bookingofficeRequest){
         return bookingofficeService.updateBookingoffice(id, bookingofficeRequest);
     }
 
     @DeleteMapping("{id}")
-    public ApiResponse deletebookingoffice(  @PathVariable("id") Long id){
+    public ApiResponse deletebookingoffice(@PathVariable("id") String id){
         return bookingofficeService.deleteEmployee(id);
     }
 }

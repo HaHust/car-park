@@ -47,7 +47,7 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public CarResponse addCar(CarRequest carRequest) {
-        Long parkId = carRequest.getParkId();
+        String parkId = carRequest.getParkId();
         Optional<Parkinglot> parkinglot = parkinglotRepository.findById(parkId);
         if(!parkinglot.isPresent())
             return null;
